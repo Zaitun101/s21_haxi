@@ -3,6 +3,7 @@ import login from './project/login';
 import Main from './project/Main';
 import All_reqestes from './project/all_reqestes';
 import Add_time from './project/add_time';
+import MyRides from './project/MyRides';
 
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
@@ -35,6 +36,11 @@ export default function Navigate() {
                 name='add_time'
                 component={Add_time}
                 options={{ title: 'Создать поездку' }}
+            />
+            <stack.Screen
+                name='MyRides'
+                component={MyRides}
+                options={{ title: 'Мои поездки' }}
             />
         </stack.Navigator>
     </NavigationContainer>

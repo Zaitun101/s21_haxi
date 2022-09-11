@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, TextInput, View, Button, Alert } from 'react-native';
-import fetch from './fetchWithTimeout.js'
+import { StyleSheet, TextInput, View, Button, Alert, Text } from 'react-native';
 
 export default function Regist({ navigation }) {
     const [tel_number, setNumber] = useState('');
@@ -37,6 +36,7 @@ export default function Regist({ navigation }) {
             Alert.alert("Введи корректные данные")
         }
     }
+
     const send_to_db = () => {
         navigation.navigate("Main", { text: tel_number });
     }
@@ -91,6 +91,6 @@ const styles = StyleSheet.create({
     butt_input: {
         color: 'blue',
         textAlign: 'center',
-        padding: 15,
+        padding: 5,
     }
 })

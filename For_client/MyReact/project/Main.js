@@ -1,14 +1,13 @@
 import React, { useState } from 'react';
-import { StyleSheet, TextInput, View, Button, Text, Alert } from 'react-native';
+import { StyleSheet, TextInput, View, Button, Text } from 'react-native';
+import { color } from 'react-native-reanimated';
 
-export default function Drivers({ route, navigation }) {
-
-    const tel = route.params.text;
-    const new_ride = () => {
-        navigation.navigate("add_time", { text: tel })
+export default function Client({ navigation }) {
+    const new_request = () => {
+        navigation.navigate("new_address")
     }
-    const all_requests = () => {
-        navigation.navigate("all_reqestes");
+    const all_drivers = () => {
+        navigation.navigate("all_drivers")
     }
 
 
@@ -21,7 +20,7 @@ export default function Drivers({ route, navigation }) {
                     <Button
                         title='Мои поездки'
                         color={'green'}
-                        onPress={() => navigation.navigate("MyRides")}
+                        onPress={() => navigation.navigate("MyRequests")}
                     />
                     <View style={{
                         top: 10,
@@ -30,14 +29,14 @@ export default function Drivers({ route, navigation }) {
                         <Button
                             title='Создать новую поездку'
                             color={'blue'}
-                            onPress={() => new_ride()}
+                            onPress={() => new_request()}
                         />
                     </View>
                     <View style={{ top: 20 }}>
                         <Button
-                            title='Посмотреть все заказы'
+                            title='Посмотреть свободных водителей'
                             color={'red'}
-                            onPress={() => all_requests()}
+                            onPress={() => navigation.navigate("all_drivers")}
                         />
                     </View>
                 </View>
@@ -71,5 +70,8 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: '#d0e3f7',
     },
+    menu: {
+        backgroundColor: 'red',
+        fontShize: 190,
+    }
 })
-

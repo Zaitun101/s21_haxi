@@ -15,12 +15,13 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
-            $table->string('addr1');
-            $table->string('addr2');
+            $table->string('addr1')->nullable();
+            $table->string('addr2')->nullable();
             $table->string('date');
-            $table->string('inform');
-            $table->string('car_plate')->nullable();
+            $table->string('inform')->nullable();
+            $table->string('phone_client')->nullable();
+            $table->string('phone_driver')->nullable();
+            $table->integer('moderator_checked')->nullable()->default('0');
         });
     }
 

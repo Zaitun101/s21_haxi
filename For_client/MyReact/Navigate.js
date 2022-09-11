@@ -4,6 +4,7 @@ import Main from './project/Main';
 import Regist from './project/regist';
 import New from './project/new_adress';
 import all_drivers from './project/all_drivers';
+import MyRequests from './project/MyRequests';
 
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
@@ -41,6 +42,11 @@ export default function Navigate() {
                 name='all_drivers'
                 component={all_drivers}
                 options={{ title: 'Свободные водители:' }}
+            />
+            <stack.Screen
+                name='MyRequests'
+                component={MyRequests}
+                options={{ title: 'Мои заявки' }}
             />
         </stack.Navigator>
     </NavigationContainer>

@@ -7,5 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Client extends Model
 {
-    use HasFactory;
+  use HasFactory;
+  protected $fillable = ['phone', 'password', 'fio'];
+  public $timestamps = false;
+  
+  
 }

@@ -1,17 +1,13 @@
 import React, { useState } from 'react';
-import { StyleSheet, TextInput, View, Button, Text, Alert } from 'react-native';
-import fetch from './fetchWithTimeout.js'
+import { StyleSheet, TextInput, View, Button, Text } from 'react-native';
 
-export default function New({ navigation, route }) {
+export default function New({ navigation }) {
 
     const [date, setDate] = useState('');
     const onChangeDate = (date) => {
         setDate(date);
     };
-    const [time, setTime] = useState('');
-    const onChangeTime = (time) => {
-        setTime(time);
-    };
+
     const [comment, setComment] = useState('');
     const onChangeComm = (comment) => {
         setComment(comment);
@@ -25,14 +21,12 @@ export default function New({ navigation, route }) {
         setadr2(address2);
     };
 
-    const tel_number = route.params.text;
-
     const send_to_db = () => {
-        fetch('https://haxi2.bacek97.repl.co/api/order?date=' + date + time + '&addr1=' + address1 + '&addr2=' + address2 + '&inform=' + comment + '&phone_driver=' + tel_number, 5000)
+        fetch('https://haxi2.bacek97.repl.co/api/order?date=' + date + '&addr1=' + address1 + '&addr2=' + address2 + '&inform=' + comment + '&phone_client=', 5000)
             .then(res => res.json())
             .then(
                 (result) => {
-                    navigation.navigate("Main", { text: tel_number });
+                    navigation.navigate("Main");
                 },
                 (error) => {
                     Alert.alert("Timeout Error")
@@ -43,25 +37,32 @@ export default function New({ navigation, route }) {
             })
     }
 
-
     return (
         <View style={styles.box}>
             <View style={styles.bloks}>
                 <Text style={styles.text}>
-                    Дата</Text>
+                    Адрес отправления:</Text>
                 <TextInput style={styles.input}
-                    onChangeText={onChangeDate}
-                    placeholder='Дата'
+                    onChangeText={onChangeAddress1}
+                    placeholder='Ул. Ленина, 18, кв.23'
                     fontWeight='bold'
                     textAlign='center'
                 />
             </View>
             <View>
                 <Text style={styles.text}>
-                    Время(От/до)</Text>
+                    Адрес назначения:</Text>
                 <TextInput style={styles.input}
-                    onChangeText={onChangeTime}
-                    placeholder='Время(От/до)'
+                    onChangeText={onChangeAddress2}
+                    placeholder='Проспект Победы, 13'
+                    fontWeight='bold'
+                    textAlign='center'
+                />
+                <Text style={styles.text}>
+                    Дата и время:</Text>
+                <TextInput style={styles.input}
+                    onChangeText={onChangeDate}
+                    placeholder='10.09.2022, 18:00'
                     fontWeight='bold'
                     textAlign='center'
                 />
@@ -69,7 +70,7 @@ export default function New({ navigation, route }) {
                     Комментарий</Text>
                 <TextInput style={styles.input}
                     onChangeText={onChangeComm}
-                    placeholder='Все, что хочешь'
+                    placeholder='Доехать до больницы с ребенком в инвалидном кресле'
                     fontWeight='bold'
                     textAlign='center'
                 />
@@ -84,8 +85,6 @@ export default function New({ navigation, route }) {
         </View>
     )
 }
-
-
 
 const styles = StyleSheet.create({
     butt_input: {

@@ -9,4 +9,5 @@ class Driver extends Model
 {
   use HasFactory;
   protected $fillable = ['phone', 'password', 'fio', 'car_plate'];
+  public $timestamps = false;
 }

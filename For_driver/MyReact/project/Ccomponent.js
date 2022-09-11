@@ -7,11 +7,12 @@ export default class Ccomponent extends Component {
         this.state = {
             error: null,
             isLoaded: false,
-            items: 'asd'
+            items: []
         };
     }
+
     componentDidMount() {
-        fetch('https://haxi2.bacek97.repl.co/api/driver?phone=89003214753&password=123')
+        fetch('https://haxi2.bacek97.repl.co/api/driver?fio?number?comment')
             .then(res => res.json())
             .then(
                 (result) => {
